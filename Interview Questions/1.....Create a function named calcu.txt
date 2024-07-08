@@ -1,0 +1,136 @@
+1.....Create a function named calculate() in mean_var_std.py that uses Numpy to output the mean, variance, standard deviation, max, min, and sum of the rows, columns, and elements in a 3 x 3 matrix.
+
+The input of the function should be a list containing 9 digits. The function should convert the list into a 3 x 3 Numpy array, and then return a dictionary containing the mean, variance, standard deviation, max, min, and sum along both axes and for the flattened matrix.
+
+The returned dictionary should follow this format:
+{
+  'mean': [axis1, axis2, flattened],
+  'variance': [axis1, axis2, flattened],
+  'standard deviation': [axis1, axis2, flattened],
+  'max': [axis1, axis2, flattened],
+  'min': [axis1, axis2, flattened],
+  'sum': [axis1, axis2, flattened]
+}
+If a list containing less than 9 elements is passed into the function, it should raise a ValueError exception with the message: "List must contain nine numbers." The values in the returned dictionary should be lists and not Numpy arrays.
+
+For example, calculate([0,1,2,3,4,5,6,7,8]) should return:
+{
+  'mean': [[3.0, 4.0, 5.0], [1.0, 4.0, 7.0], 4.0],
+  'variance': [[6.0, 6.0, 6.0], [0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 6.666666666666667],
+  'standard deviation': [[2.449489742783178, 2.449489742783178, 2.449489742783178], [0.816496580927726, 0.816496580927726, 0.816496580927726], 2.581988897471611],
+  'max': [[6, 7, 8], [2, 5, 8], 8],
+  'min': [[0, 1, 2], [0, 3, 6], 0],
+  'sum': [[9, 12, 15], [3, 12, 21], 36]
+}
+
+
+
+-----------
+import numpy as np
+
+def calculate(numbers):
+    if len(numbers) != 9:
+        raise ValueError("List must contain nine numbers.")
+    
+    matrix = np.array(numbers).reshape(3, 3)
+    
+    calculations = {
+        'mean': [
+            matrix.mean(axis=0).tolist(),
+            matrix.mean(axis=1).tolist(),
+            matrix.mean().tolist()
+        ],
+        'variance': [
+            matrix.var(axis=0).tolist(),
+            matrix.var(axis=1).tolist(),
+            matrix.var().tolist()
+        ],
+        'standard deviation': [
+            matrix.std(axis=0).tolist(),
+            matrix.std(axis=1).tolist(),
+            matrix.std().tolist()
+        ],
+        'max': [
+            matrix.max(axis=0).tolist(),
+            matrix.max(axis=1).tolist(),
+            matrix.max().tolist()
+        ],
+        'min': [
+            matrix.min(axis=0).tolist(),
+            matrix.min(axis=1).tolist(),
+            matrix.min().tolist()
+        ],
+        'sum': [
+            matrix.sum(axis=0).tolist(),
+            matrix.sum(axis=1).tolist(),
+            matrix.sum().tolist()
+        ]
+    }
+    
+    return calculations
+
+# Example usage:
+result = calculate([0, 1, 2, 3, 4, 5, 6, 7, 8])
+print(result)
+
+
+2......Question 1: How many people of each race are represented in this dataset?
+python
+Copy code
+# How many people of each race are represented in this dataset?
+race_counts = df['race'].value_counts()
+print(race_counts)
+Question 2: What is the average age of men?
+python
+Copy code
+# What is the average age of men?
+average_age_men = df[df['sex'] == 'Male']['age'].mean()
+print(average_age_men)
+Question 3: What is the percentage of people who have a Bachelor's degree?
+python
+Copy code
+# What is the percentage of people who have a Bachelor's degree?
+percentage_bachelors = (df['education'] == 'Bachelors').mean() * 100
+print(percentage_bachelors)
+Question 4: What percentage of people with advanced education (Bachelors, Masters, or Doctorate) make more than 50K?
+python
+Copy code
+# What percentage of people with advanced education (Bachelors, Masters, or Doctorate) make more than 50K?
+advanced_education = df['education'].isin(['Bachelors', 'Masters', 'Doctorate'])
+percentage_advanced_education_rich = (df[advanced_education]['salary'] == '>50K').mean() * 100
+print(percentage_advanced_education_rich)
+Question 5: What percentage of people without advanced education make more than 50K?
+python
+Copy code
+# What percentage of people without advanced education make more than 50K?
+percentage_non_advanced_education_rich = (df[~advanced_education]['salary'] == '>50K').mean() * 100
+print(percentage_non_advanced_education_rich)
+Question 6: What is the minimum number of hours a person works per week?
+python
+Copy code
+# What is the minimum number of hours a person works per week?
+min_hours_per_week = df['hours-per-week'].min()
+print(min_hours_per_week)
+Question 7: What percentage of the people who work the minimum number of hours per week have a salary of more than 50K?
+python
+Copy code
+# What percentage of the people who work the minimum number of hours per week have a salary of more than 50K?
+min_hours_workers = df['hours-per-week'] == min_hours_per_week
+percentage_min_hours_rich = (df[min_hours_workers]['salary'] == '>50K').mean() * 100
+print(percentage_min_hours_rich)
+Question 8: What country has the highest percentage of people that earn >50K and what is that percentage?
+python
+Copy code
+# What country has the highest percentage of people that earn >50K and what is that percentage?
+country_salary = df[df['salary'] == '>50K']['native-country'].value_counts()
+country_counts = df['native-country'].value_counts()
+highest_earning_country = (country_salary / country_counts).idxmax() if not country_salary.empty else None
+highest_earning_country_percentage = (country_salary / country_counts).max() * 100 if not country_salary.empty else None
+print(highest_earning_country, highest_earning_country_percentage)
+Question 9: Identify the most popular occupation for those who earn >50K in India.
+python
+Copy code
+# Identify the most popular occupation for those who earn >50K in India.
+india_high_earners = df[(df['native-country'] == 'India') & (df['salary'] == '>50K')]
+most_popular_occupation_india = india_high_earners['occupation'].mode()[0] if not india_high_earners.empty else None
+print(most_popular_occupation_india)

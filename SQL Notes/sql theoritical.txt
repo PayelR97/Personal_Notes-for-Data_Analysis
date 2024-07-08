@@ -1,0 +1,134 @@
+1. What is SQL?
+
+SQL, or Structured Query Language, is a standardized programming language used to manage and manipulate relational databases
+SQL is designed for querying, updating, and managing data stored in relational databases. It allows users to perform various operations such as inserting, updating, deleting, and retrieving data.
+
+
+
+
+2. What are the subsets of SQL or types of SQL commands and briefly explain?
+SQL commands can be grouped into several subsets based on their functionality. The primary subsets are:
+
+DDL (Data Definition Language): Commands like CREATE, ALTER, DROP that define or modify database structure.
+DML (Data Manipulation Language): Commands like SELECT, INSERT, UPDATE, DELETE that manage data within tables.
+DCL (Data Control Language): Commands like GRANT, REVOKE that control access to the database.
+TCL (Transaction Control Language): Commands like COMMIT, ROLLBACK that manage database transactions.
+
+----------------------------------------------------------------------------------------------------------------------------------
+3. What is the sequence of execution in SQL?
+FROM: Identify the tables to query.
+JOIN: Perform any necessary table joins.
+WHERE: Filter rows based on conditions.
+GROUP BY: Group rows based on specified columns.
+HAVING: Filter groups based on conditions.
+SELECT: Select the columns or expressions to return.
+ORDER BY: Sort the result set.
+LIMIT/OFFSET: Limit the number of rows returned.
+4. Advantages & disadvantage of SQL
+
+
+
+
+
+5. What is Database? And how to create a database in SQL?
+
+What is a Database?
+A database is an organized collection of data that is stored and accessed electronically. Databases are designed to efficiently manage, retrieve, and manipulate data, ensuring data integrity, security, and scalability. They are used in various applications, from simple data storage to complex data analytics and processing.
+CREATE DATABASE my_database;
+
+
+6. What is DBMS?
+
+A Database Management System (DBMS) is a software system that enables users to define, create, maintain, and control access to databases. DBMS serves as an intermediary between the user and the database, ensuring that data is consistently organized and easily accessible.
+
+7. What are Tables and Fields?
+Tables: Tables are the fundamental structure for organizing and storing data in a relational database. They consist of rows and columns, where each row represents a single record or entity, and each column represents a specific attribute or field of that record.
+
+
+Fields: Fields, also known as columns or attributes, are the individual data elements within a table.
+
+8. What are Constraints in SQL?
+
+Constraints in SQL are rules or conditions applied to columns or tables to enforce data integrity and ensure accuracy, consistency, and reliability of the data stored in a database. 
+
+primary key,foreign unique, check , not null
+
+
+9. What is a primary key and foreign key?
+
+A primary key is a column or a combination of columns in a table that uniquely identifies each row. It must have a unique value for each row and cannot contain null values.
+
+
+A foreign key is a column or a set of columns in one table that refers to the primary key in another table. It establishes a relationship between the two tables, known as a parent-child relationship.
+
+10.How to create and delete a table in SQL?
+
+
+11.What is a "TRIGGER" in SQL?
+
+
+In SQL, a "TRIGGER" is a database object that automatically executes a specified set of actions in response to certain events, such as INSERT, UPDATE, or DELETE operations on a table. Triggers are used to enforce business rules, maintain data integrity, and automate tasks within the database. Here are some key points about triggers:
+
+
+Here are concise answers to each SQL question:
+
+### 12. How to change a table name in SQL?
+To rename a table, use the `ALTER TABLE` statement followed by `RENAME TO`. Example:
+```sql
+ALTER TABLE old_table_name RENAME TO new_table_name;
+```
+
+### 13. What is join in SQL? List its different types.
+A join combines rows from two or more tables based on a related column. Types include:
+- **INNER JOIN**
+- **LEFT JOIN** (or LEFT OUTER JOIN)
+- **RIGHT JOIN** (or RIGHT OUTER JOIN)
+- **FULL JOIN** (or FULL OUTER JOIN)
+- **CROSS JOIN**
+- **SELF JOIN**
+
+### 14. What is Normalization in SQL?
+Normalization is a process of organizing data to reduce redundancy and improve data integrity by dividing a database into two or more tables and defining relationships between them.
+
+### 15. How to insert a date in SQL?
+Use the `INSERT INTO` statement with a date in the format 'YYYY-MM-DD'. Example:
+```sql
+INSERT INTO table_name (date_column) VALUES ('2024-06-20');
+```
+
+### 16. What are the TRUNCATE, DELETE and DROP statements?
+- **TRUNCATE** removes all rows from a table but keeps the table structure.
+- **DELETE** removes specified rows from a table based on a condition.
+- **DROP** removes a table entirely from the database.
+
+### 17. What are the different types of SQL operators?
+SQL operators include:
+- **Arithmetic Operators** (`+`, `-`, `*`, `/`)
+- **Comparison Operators** (`=`, `!=`, `<`, `>`, `<=`, `>=`)
+- **Logical Operators** (`AND`, `OR`, `NOT`)
+- **Bitwise Operators** (`&`, `|`, `^`)
+
+### 18. What are Aggregate and Scalar functions?
+- **Aggregate Functions** perform calculations on multiple values and return a single result (e.g., `SUM`, `AVG`, `COUNT`).
+- **Scalar Functions** perform operations on individual values and return a single value (e.g., `UCASE`, `LCASE`, `ROUND`).
+
+### 19. What does a window function do in SQL?
+A window function performs calculations across a set of table rows related to the current row, enabling calculations like running totals or ranking.
+
+### 20. What are operators, share its types and examples?
+Operators are symbols that specify operations on data values:
+- **Arithmetic Operators**: `+` (addition), `-` (subtraction)
+- **Comparison Operators**: `=` (equal), `>` (greater than)
+- **Logical Operators**: `AND`, `OR`
+- **Bitwise Operators**: `&` (bitwise AND), `|` (bitwise OR)
+
+### 21. Difference between RANK, DENSE_RANK, and ROW_NUMBER in SQL
+- **RANK** assigns a unique rank to each row, with gaps for ties.
+- **DENSE_RANK** assigns a unique rank without gaps for ties.
+- **ROW_NUMBER** assigns a unique sequential integer to each row.
+
+### 22. What are clustered and non-clustered indexes in SQL?
+- **Clustered Index**: Reorders the table rows based on the index key; only one per table.
+- **Non-Clustered Index**: Creates a separate object from the table that points to the data rows; multiple per table.
+
+
